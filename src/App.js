@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Card from './project/card.js'
+import CreateCard from './project/createcard.js'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className='center-app'>
-          <Card />
+          <CreateCard />
         </div>
       </div>
     );

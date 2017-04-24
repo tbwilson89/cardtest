@@ -4,23 +4,115 @@
 .center-app {
   margin: 0 auto;
 }
+.form-wrapper {
+  display: flex;
+}
+.creation-form {
+  width: 50%;
+  input, textarea {
+    margin: 2px;
+  }
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: inherit;
+  z-index: 1;
+  a {
+    color: black;
+    text-decoration: none;
+    display: block;
+  }
+}
+#inputEffects {
+  height: 100px;
+  resize: none;
+}
+.display-card {
+  width: 50%;
+}
 
 .wrapper {
   height: 8.128cm;
   width: 5.588cm;
-  margin: 0 auto;
+  margin: 50px auto;
+  padding: 3px;
+  box-sizing: border-box;
+  border: 5px solid black;
+  border-radius: 5px;
+  background: linear-gradient(to bottom right, white, #ddd, white);
 }
 .row {
   display: flex;
+  justify-content: center;
+  div {
+    background: white;
+  }
 }
-
-.casting-cost {
+//SETTING CARD ROWS HEIGHT
+.first {
+  height: 8%;
+}
+.second {
+  height: 8%;
+}
+.third {
+  height: 38%;
+}
+.fourth {
+  height: 36%;
+}
+.fifth {
   height: 10%;
-  width: 15%;
-  border: 1px solid black;
+}
+//DESIGN FOR EACH SECTION OF THE CARD
+.casting-cost {
+  width: 12%;
+  outline: 1px solid black;
 }
 .card-name {
-  height: 10%;
-  width: 80%;
-  border: 1px solid black;
+  width: 87%;
+  outline: 1px solid black;
+}
+.devotion-cost {
+  width: 11%;
+  outline: 1px solid black;
+}
+.element {
+  width: 11%;
+  outline: 1px solid black;
+}
+.card-section {
+  width: 77%;
+  outline: 1px solid black;
+}
+.type {
+  width: 23%;
+}
+.class {
+  width: 75%;
+}
+.image {
+  width: 99%;
+  outline: 1px solid black;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+.textbox {
+  width: 99%;
+  outline: 1px solid black;
+}
+.stats {
+  width: 20%;
+  text-align: center;
+  font-size: 1.5em;
+  outline: 1px solid black;
+  margin-right: 1.5%;
+  margin-right: auto;
 }
