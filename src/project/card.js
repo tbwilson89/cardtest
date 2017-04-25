@@ -2,30 +2,6 @@ import React, { Component } from 'react';
 
 class Card extends Component {
 
-  constructor(props){
-    super(props)
-    this.state = {
-      primaryBg: 'grey',
-      secondaryBg: '#222'
-    }
-    this.switchDesign = this.switchDesign.bind(this)
-  }
-  switchDesign(el){
-    switch(el) {
-      case 'Fire':
-        this.setState ({
-          primaryBg: '#c71e0c',
-          secondaryBg: '#751207'
-        })
-        break;
-      default:
-        this.setState ({
-          primaryBg: 'grey',
-          secondaryBg: '#222'
-        })
-        break;
-    }
-  }
   render(){
     return(
       <div id='card-wrapper' className='wrapper'>

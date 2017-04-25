@@ -9,22 +9,31 @@
 
 .creation-form {
   width: 50%; }
-  .creation-form input, .creation-form textarea {
-    margin: 2px; }
+
+input, select, textarea {
+  width: 225px;
+  margin: 2px; }
 
 .dropdown {
   position: relative;
   display: inline-block; }
 
 .dropdown-content {
-  display: none;
   position: absolute;
-  min-width: inherit;
-  z-index: 1; }
+  min-width: 225px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 3px;
+  border: 1px solid black;
+  border-radius: 2px; }
   .dropdown-content a {
     color: black;
     text-decoration: none;
     display: block; }
+
+#myDropdown {
+  display: none; }
 
 #inputEffects {
   height: 100px;
@@ -65,8 +74,10 @@
   height: 10%; }
 
 .casting-cost {
+  text-align: center;
   width: 12%;
-  outline: 1px solid black; }
+  outline: 1px solid black;
+  font-size: 1.1em; }
 
 .card-name {
   width: 87%;
