@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 
 class Card extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      cardType: ''
+    }
+  }
+
   render(){
+
     return(
       <div id='card-wrapper' className='wrapper'>
         <div className='row first'>
@@ -13,10 +21,7 @@ class Card extends Component {
           <div className='devotion-cost'>{this.props.devotionReq}</div>
           <div className='element'>{this.props.elementType}</div>
           <div className='card-section'>
-            <div className='row'>
-              <div className='type'>{this.props.cardType}</div>
-              <div className='class'>{this.props.classRace}</div>
-            </div>
+            <span>{this.props.classRace !== '' ? this.props.cardType + ' - ' + this.props.classRace : this.props.cardType}</span>
           </div>
         </div>
         <div className='row third'>
