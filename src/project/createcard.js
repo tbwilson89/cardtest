@@ -16,7 +16,8 @@ class CreateCard extends Component {
       inputTypeClass: '',
       inputImage: '',
       inputEffects: '',
-      inputStats: '',
+      inputPower: '',
+      inputHealth: '',
       changeElement: ''
     }
     this.updateInputValue = this.updateInputValue.bind(this)
@@ -105,7 +106,8 @@ class CreateCard extends Component {
           <input id='inputClass' onChange={this.updateInputValue} placeholder='Race / Class'></input><br/>
           <input id='inputImage' onChange={this.updateInputValue} placeholder='Image URL'></input><br/>
           <textarea id='inputEffects' onChange={this.updateInputValue} placeholder='Card Effects' ></textarea><br/>
-          <input id='inputStats' onChange={this.updateInputValue} placeholder='Power/Defense'></input><br/>
+          <input id='inputPower' onChange={this.updateInputValue} placeholder='Power'></input>
+          <input id='inputHealth' onChange={this.updateInputValue} placeholder='Health'></input><br/>
           <p>Test Image URL: http://www.shunvmall.com/data/out/253/47488317-warrior-images.png</p>
         </section>
         <section className='display-card'>
@@ -117,7 +119,8 @@ class CreateCard extends Component {
             classRace={this.state.inputClass}
             imageLoc={this.state.inputImage}
             cardEffects={this.state.inputEffects}
-            cardStats={this.state.inputStats}
+            cardPower={this.state.inputPower}
+            cardHealth={this.state.inputHealth}
           />
         </section>
       </div>

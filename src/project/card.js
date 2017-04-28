@@ -10,7 +10,6 @@ class Card extends Component {
   }
 
   render(){
-
     return(
       <div id='card-wrapper' className='wrapper'>
         <div className='row first'>
@@ -33,7 +32,8 @@ class Card extends Component {
           <div className='textbox'>{this.props.cardEffects}</div>
         </div>
         <div className='row fifth'>
-          <div className='stats'>{this.props.cardStats}</div>
+          <div className='stats'>{this.props.cardPower}</div>
+          <div className='health'>{this.props.cardHealth}</div>
         </div>
       </div>
     )
