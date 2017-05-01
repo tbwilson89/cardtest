@@ -18,12 +18,24 @@ class CreateCard extends Component {
       inputEffects: '',
       inputPower: '',
       inputHealth: '',
-      changeElement: ''
+      changeElement: '',
+      paragonEffectArray: [],
+      paragonEffectCount: 1
     }
     this.updateInputValue = this.updateInputValue.bind(this)
     this.dropdownChangeElement = this.dropdownChangeElement.bind(this)
+    this.changeParagonEffect = this.changeParagonEffect.bind(this)
   }
   updateInputValue(event){
+    if(event.target.id.slice(0, 18) === 'inputParagonEffect'){
+      let newArray = this.state.paragonEffectArray
+      console.log(event.target.id.slice(18))
+      newArray[event.target.id.slice(18) - 1] = event.target.value
+      console.log(newArray)
+      this.setState({
+        paragonEffectArray: newArray
+      })
+    }
     this.setState({
       [event.target.id]: event.target.value
     })
@@ -72,8 +84,91 @@ class CreateCard extends Component {
         break;
     }
   }
+  changeParagonEffect(event) {
+    if(event.target.id === 'addEffect'){
+      this.setState({
+        paragonEffectCount: this.state.paragonEffectCount + 1
+      })
+    } else {
+      let newArray = this.state.paragonEffectArray
+      newArray.splice(-1,1)
+      this.setState({
+        paragonEffectCount: this.state.paragonEffectCount - 1,
+        paragonEffectArray: newArray
+      })
+
+    }
+  }
 
   render(){
+    if(this.state.inputCardType === 'Paragon'){
+      let paragonEffects = []
+      let currentNum = 0
+      console.log(this.state.paragonEffectCount)
+      while (paragonEffects.length !== this.state.paragonEffectCount) {
+        currentNum++
+        paragonEffects.push(
+          <div key={paragonEffects.length}>
+            <input id={'inputParagonEffect' + currentNum} onChange={this.updateInputValue} placeholder={'Paragon Effect #' + currentNum}></input><br/>
+          </div>
+        )
+      }
+      return (
+        <div className='form-wrapper'>
+          <section className='creation-form'>
+            <h3>Input Card Information Below:</h3>
+            <input id='inputCastingCost' onChange={this.updateInputValue} placeholder='Casting Cost' maxLength='2'></input><br/>
+            <input id='inputCardName' onChange={this.updateInputValue} placeholder='Card Name'></input><br/>
+            <input id='inputDevotionReq' onChange={this.updateInputValue} placeholder='Devotion Requirement'></input><br/>
+            <select id='inputElementType' name='element' onChange={this.dropdownChangeElement}>
+              <option value=''>Elemental Type 1</option>
+              <option value=''>None</option>
+              <option value='fire'>Fire</option>
+              <option value='ice'>Ice</option>
+              <option value='water'>Water</option>
+              <option value='earth'>Earth</option>
+              <option value='wind'>Wind</option>
+              <option value='electric'>Electric</option>
+              <option value='light'>Light</option>
+              <option value='dark'>Dark</option>
+              <option value='arcane'>Arcane</option>
+              <option value='void'>Void</option>
+              <option value='aether'>AEther</option>
+            </select>
+            <select name='type' id='inputCardType' onChange={this.updateInputValue}>
+              <option value=''>Card Type</option>
+              <option value='Unit'>Unit</option>
+              <option value='Spell'>Spell</option>
+              <option value='Location'>Location</option>
+              <option value='Paragon'>Paragon</option>
+            </select>
+            <input id='inputClass' onChange={this.updateInputValue} placeholder='Race / Class'></input><br/>
+            <input id='inputImage' onChange={this.updateInputValue} placeholder='Image URL'></input><br/>
+            <button id='addEffect' onClick={this.changeParagonEffect}>+</button>
+            <button id='removeEffect' onClick={this.changeParagonEffect}>-</button>
+            {paragonEffects}
+            <textarea id='inputEffects' onChange={this.updateInputValue} placeholder='Card Effects' ></textarea><br/>
+            <input id='inputHealth' onChange={this.updateInputValue} placeholder='Starting Health'></input><br/>
+            <p>Test Image URL: http://www.shunvmall.com/data/out/253/47488317-warrior-images.png</p>
+          </section>
+          <section className='display-card'>
+            <Card
+              castingCost={this.state.inputCastingCost}
+              cardName={this.state.inputCardName}
+              devotionReq={this.state.inputDevotionReq}
+              elementType={this.state.inputElementType}
+              cardType={this.state.inputCardType}
+              classRace={this.state.inputClass}
+              imageLoc={this.state.inputImage}
+              cardEffects={this.state.inputEffects}
+              paragonEffects={this.state.paragonEffectArray}
+              cardPower={this.state.inputPower}
+              cardHealth={this.state.inputHealth}
+            />
+          </section>
+        </div>
+      )
+    }
     return (
       <div className='form-wrapper'>
         <section className='creation-form'>
@@ -111,7 +206,8 @@ class CreateCard extends Component {
           <p>Test Image URL: http://www.shunvmall.com/data/out/253/47488317-warrior-images.png</p>
         </section>
         <section className='display-card'>
-          <Card castingCost={this.state.inputCastingCost}
+          <Card
+            castingCost={this.state.inputCastingCost}
             cardName={this.state.inputCardName}
             devotionReq={this.state.inputDevotionReq}
             elementType={this.state.inputElementType}

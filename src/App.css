@@ -27,6 +27,8 @@ input, select, textarea {
 .wrapper {
   height: 8.128cm;
   width: 5.588cm;
+  height: 3.5in;
+  width: 2.5in;
   overflow: hidden;
   white-space: nowrap;
   font-size: 1vw;
@@ -96,6 +98,9 @@ input, select, textarea {
 .textbox {
   width: 99%;
   outline: 1px solid black; }
+
+.paragonEffectBox {
+  border: 1px solid black; }
 
 .stats {
   width: 15%;
